@@ -1,6 +1,6 @@
 This is the README file for the newSinvariants program.
 
-Copyright (C) 2011,2012 Robert Lipshitz and Sucharit Sarkar.
+Copyright (C) 2012 Robert Lipshitz and Sucharit Sarkar.
 Contact: lipshitz@math.columbia.edu, sucharit@math.columbia.edu
 
 Copying and distribution of this file, with or without modification,
@@ -22,10 +22,8 @@ the files of newSinvariants.  Henceforth, we are assuming that you are
 using a shell where the command "sage" is configured to run the
 program Sage.
  
--Run the wrapper program on all the knots in extracted.sage (these
-knots are precisely the knots with non-zero rank in grading (-2,s-1),
-so s+ could be higher than s). The program takes a long time, so it is
-better to use nohup.
+-Run the wrapper program on all the knots in extracted.sage The
+program takes a long time, so it is better to use nohup.
 nohup sage wrapper.sage > /dev/null 2> /dev/null < /dev/null &
 
 

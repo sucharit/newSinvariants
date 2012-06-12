@@ -18,29 +18,34 @@
 ## <http://www.gnu.org/licenses/>.
 
 
-
 load main.sage
+
 load extracted.sage
 
-N=len(mathematica_knots)
+N=len(all11_knots)
 
 
 writing=open("output.txt","w")
 
 for i in range(0,N):
-    name=mathematica_knots[i]
+    name=all11_knots[i]
     print i
     print name
 
-    (res,cross)=PDtoOur(eval(name+'_pd'))
-    vert=PDtoCan(eval(name+'_pd'))
+    hom=eval(name+'_hom')
+    rasmus=eval(name+'_rasmus')
+    
+    if (-2,rasmus-1) in hom.keys():
+        (res,cross)=PDtoOur(eval(name+'_pd'))
+        vert=PDtoCan(eval(name+'_pd'))
 
-    K=RasmusKh(ResolvedKnot(res),vert,cross,eval(name+'_rasmus'),False)
+        K=RasmusKh(ResolvedKnot(res),vert,cross,rasmus,False)
 
-    print K.is_more
-    print '\n'
+        print K.is_more
+        print '\n'
 
-    writing.write(name+'\n'+repr(K.is_more)+'\n\n')
-    writing.flush()
+        if K.is_more:
+            writing.write(name+'\n\n')
+            writing.flush()
 
 writing.close()
