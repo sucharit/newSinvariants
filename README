@@ -7,6 +7,42 @@ Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
 
+********************************** 
+
+The main program is main.sage. The wrapper.sage runs the main program
+on the knots that are described in extracted.sage. The default version
+of extracted.sage contains knot information for all knots up to 11
+crossings, and their mirrors. For example, if you only want to study
+the Conway knot, your extracted.sage could look like the following.
+
+===
+all_knots=['Conway',]
+
+Conway_pd=[[4, 2, 5, 1], [8, 4, 9, 3], [12, 5, 13, 6], [2, 8, 3, 7], [9, 17, 10, 16], [11, 18, 12, 19], [6, 13, 7, 14], [15, 20, 16, 21], [17, 1, 18, 22], [19, 14, 20, 15], [21, 10, 22, 11]]
+Conway_hom={(-5, -9): 2, (-6, -11): 1, (1, 3): 1, (5, 9): 1, (4, 7): 2, (-2, -3): 3, (-3, -7): 3, (-2, -7): 1, (1, -1): 3, (3, 3): 2, (-1, -1): 2, (3, 5): 2, (-4, -7): 2, (1, 1): 4, (-1, -5): 2, (-5, -11): 2, (4, 5): 2, (-2, -5): 4, (-1, -3): 4, (2, 3): 3, (2, 1): 3, (0, -3): 2, (-3, -5): 3, (0, 1): 3, (-6, -13): 1, (-4, -9): 2, (5, 7): 1, (0, -1): 5}
+Conway_rasmus=0
+===
+
+The pd is the PD-presentation information from
+http://katlas.math.toronto.edu/wiki/Planar_Diagrams. The rasmus is the
+original Rasmussen's s-invariant. The hom is the Khovanov homology of
+the knot over F_2, presented as a dictionary; for example, (-5,-9):2
+means the Khovanov homology in bigrading (-5,-9) has rank 2 over
+F_2. These three pieces of data can be generated from the Mathematica
+program KnotTheory
+(http://katlas.math.toronto.edu/wiki/The_Mathematica_Package_KnotTheory),
+or by some other direct means.
+
+The wrapper.sage program runs the main.sage program on the knots
+described in extracted.sage, and produces a single output file
+output.txt. That file contains precisely the knots for which
+s_+^{Sq^2} is greater than s. (If you want to check if s_-^{Sq^2} is
+smaller than s, you have to work with the mirror, as per the
+definition.)
+
+A word of caution: The program is fairly slow, and isn't expected to
+work for high (>13) crossing knots.
+
 
 **********************************
 Here is a step by step guideline on how to recompute the data. Note,
