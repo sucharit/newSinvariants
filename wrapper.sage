@@ -22,13 +22,13 @@ load main.sage
 
 load extracted.sage
 
-N=len(all11_knots)
+N=len(all_knots)
 
 
 writing=open("output.txt","w")
 
 for i in range(0,N):
-    name=all11_knots[i]
+    name=all_knots[i]
     print i
     print name
 
